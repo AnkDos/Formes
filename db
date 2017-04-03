@@ -8,3 +8,11 @@ CREATE TABLE `users` (
   weight varchar(20) DEFAULT NULL,
   bmx varchar(20) 
 );
+
+CREATE TABLE `sch` (
+  id int(11)  AUTO_INCREMENT Primary key,
+  type varchar(20) NOT NULL,
+  workout varchar(25) NOT NULL ,
+  Supplements varchar(20) NOT NULL,
+  Diet varchar(20) NOT NULL
+);

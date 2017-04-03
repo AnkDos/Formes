@@ -20,7 +20,7 @@ if(isset($_POST['btn']))
      if($do1['password']== $key){
          
          $_SESSION['ID']=$do1['id'];
-         header("Location: home.php");
+         header("Location: home.php?w");
      }
      
      else{

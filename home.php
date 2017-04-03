@@ -4,10 +4,17 @@ session_start();
 ob_start();
 require_once 'dbconnect.php';
 
+
 if(!isset($_SESSION['ID']))
 {
     header("Location: index.php");
 }
+
+$q=mysql_query("Select * from users where id=".$_SESSION['ID']);
+$fet=mysql_fetch_array($q);
+$qr=mysql_query("Select type from users where id=".$_SESSION['ID']);
+$qrr=mysql_query("Select * from sch where type=$qr");
+$fetc=mysql_fetch_array($qrr);
 
 if(isset($_GET['lg']))
 {
@@ -79,10 +86,13 @@ if($_SESSION['mep']>$_SESSION['ecp'] && $_SESSION['mep']>$_SESSION['enp'])
 }
 
 }
-if(isset($_GET['btn1']))
+if(isset($_POST['btn1']))
 {
     $type=$_SESSION['type'];
-    $qry=mysql_query("Update users set type=$type where id=".$_SESSION['ID']);
+    $iid=$_SESSION['ID'];
+ 
+    $qry=mysql_query("Update users set type='$type' where id=$iid");
+echo "YOUR INPUT SUBMITTED SUCESSFULY NOW YOU CAN SEE YOUR PLANS<br>";
 }
 
 
@@ -139,11 +149,20 @@ if(isset($_GET['btn1']))
               
               
         </script>
-
+        <?php 
+        if(isset($_GET['w'])){
+            ?>
+       <Center> <h2> WELCOME <?php echo $fet['username'];?> </h2>
+       <h3> Your Body Type is: <?php if($fet['type']!="NULL") { echo $fet['type'];} else{echo "NO SURVEYS DONE";}  ?> </h3>
+       <h3> Your BMI: <?php if($fet['height']!="NULL" && $fet['weight']!="NULL") { echo $fet['weight']/$fet['height']*$fet['height'];} else{echo "NO SURVEYS DONE";}  ?> </h3>
+<?
+        }
+?>
 <?php
 if(isset($_GET['ss']))
 {
 ?>
+<h3>QUESTIONS FOR BODY TYPE EVALUATION<br></h3>
 
 Shoulders are?<br>
 <form method="post">
@@ -196,7 +215,7 @@ Shoulders are?<br>
 
 
 
-q5?<br>
+<br>q5?
 
      <select  id="cmb" data-role="slider" onChange="Ankura(this);" >
                          <option value="Select">Select</option>
@@ -248,7 +267,7 @@ q5?<br>
 
 
 
-
+<br>
 
 <button type='submit' name='btn'>
 Genereate Result</button>
@@ -266,6 +285,7 @@ echo $msg1."<br>";
 echo $msg2."<br>";
 echo $msg3."<br>";
 echo $msg4."<br>";
+
 //   print_r($any);
      ?>
 
@@ -277,9 +297,9 @@ echo $msg4."<br>";
 
 
 
-<a href="?lg">Logout</a>
 <br>
-
+<a href="?w">Profile</a>
+<br>
 <br>
 
 <a href="?ss">Start Survey</a>
@@ -289,9 +309,22 @@ echo $msg4."<br>";
 <a href="?wr">Show Workout Routine</a>
 <br>
 
+
+<?php
+if(isset($_GET['wr'])){
+$im=$fetc['workout'];
+?>
+<img src="img/<?php echo $im;?>">
+
+<?
+}
+?>
+
 <br>
 <a href="?su">Show Recommended Supplements</a>
 <br>
 
 <br>
 <a href="?dp">Show Recommended Diet Plans</a>
+<br>
+<a href="?lg">Logout</a>1
