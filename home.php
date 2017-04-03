@@ -12,10 +12,12 @@ if(!isset($_SESSION['ID']))
 
 $q=mysql_query("Select * from users where id=".$_SESSION['ID']);
 $fet=mysql_fetch_array($q);
-$qr=mysql_query("Select type from users where id=".$_SESSION['ID']);
-$qrr=mysql_query("Select * from sch where type=$qr");
-$fetc=mysql_fetch_array($qrr);
+//$qr=mysql_query("Select type from users where id=".$_SESSION['ID']);
+$ty=$fet['type'];
+$qrr=mysql_query("Select * from sch where type='$ty'");
 
+
+$fetc=mysql_fetch_array($qrr);
 if(isset($_GET['lg']))
 {
     session_destroy();
@@ -312,9 +314,10 @@ echo $msg4."<br>";
 
 <?php
 if(isset($_GET['wr'])){
-$im=$fetc['workout'];
+   //echo $fetc['workout'];
+
 ?>
-<img src="img/<?php echo $im;?>">
+<img src="img/<?php echo $fetc['workout'];?>" height="230px" widht="230px">
 
 <?
 }
@@ -327,4 +330,4 @@ $im=$fetc['workout'];
 <br>
 <a href="?dp">Show Recommended Diet Plans</a>
 <br>
-<a href="?lg">Logout</a>1
+<a href="?lg">Logout</a>
