@@ -17,9 +17,7 @@ if(isset($_GET['lg']))
 
 
 
-$meso=array(1,2,3,4);
-$endo=array(2,1,3,4);
-$enco=array(3,1,2,4);
+
  $any=[];
 
 if(isset($_GET['btn']))
@@ -142,3 +140,5 @@ echo $msg." TYPE: ".$type ;
 
 
 <a href="?lg">Logout</a>
+
+<a href="?ss">Start Survey</a>
