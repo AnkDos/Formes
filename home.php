@@ -59,6 +59,31 @@ array_push($any,$a,$b,$c,$d);
               
               
               
+              function Ankura(t) 
+             {
+                var y=document.getElementById("txt4");
+                y.value = t.value;
+               }
+              function Ankuraa(t) 
+             {
+                var a=document.getElementById("txt5");
+                a.value = t.value;
+               }
+              function Ankuraaa(t) 
+             {
+                var b=document.getElementById("txt6");
+                b.value = t.value;
+               
+              }
+              function Ankuraaaa(t) 
+             {
+                var c=document.getElementById("txt7");
+                c.value = t.value;
+              }
+              
+              
+              
+              
         </script>
 
 <?php
@@ -110,9 +135,80 @@ What is your height?<br>
                           <option value="4">4</option>
     </select>
 <input type="text" name="fourth" id="txt3" hidden> </input>
+
+
+
+
+
+
+
+What is your height?<br>
+<form method="get">
+     <select  id="cmb" data-role="slider" onChange="Ankura(this);" >
+                         <option value="Select">Select</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+    </select> 
+    <input type="text" name="first" id="txt4" hidden></input>
+<br>What is your biceps?
+
+
+ <select  id="cmb" data-role="slider" onChange="Ankuraa(this);" >
+     <option value="Select">Select</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+    </select>
+    
+<input type="text" name="second" id="txt5" hidden></input>
+<br>What is your wrist?   
+
+<select  id="cmb" data-role="slider" onChange="Ankuraaa(this);" >
+                          <option value="Select">Select</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+    </select>
+
+ 
+<input type="text" name="third" id="txt6" hidden></input>
+
+<br>What is your fist?    
+<select  id="cmb" data-role="slider" onChange="Ankuraaaa(this);" >
+    <option value="Select">Select</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+    </select>
+<input type="text" name="fourth" id="txt7" hidden> </input>
+
+
+
+
+
+
+
+
+
+
+
+
 <button type='submit' name='btn'>
 Submit</button>
 </form>
+
+
+
+
+
+
+
+
 <?
 }
 ?>
