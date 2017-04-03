@@ -1,4 +1,8 @@
 <?php
+session_start();
+ob_start();
+
+require 'dbconnect.php';
 
 
 if(isset($_POST['btn']))
@@ -65,21 +69,22 @@ if(isset($_POST['btn1']))
 
 <html>
     <body>
+        Login!
         <form method='post'>
            Email <input type='email' name='mail'></input>
        Password <input type='password' name='keys'></input>
-        <button type='submit' name='btn'>click</button>
+        <button type='submit' name='btn'>Login</button>
    </form>
    
    
    <br>
-   
+   Sign up!
         <form method='post'>
             Name <input type='text' name='name'></input><br>
             Email <input type='email' name='email'></input><br>
             
           
             Chose password <input type='password' name='keys'></input><br>
-            <button type='submit' name='btn1'>submit</button> </form>
+            <button type='submit' name='btn1'>Sign Up</button> </form>
    
     </body>
