@@ -18,18 +18,72 @@ if(isset($_GET['lg']))
 
 
 
- $any=[];
-
-if(isset($_GET['btn']))
+ 
+if(isset($_POST['btn']))
 {
-   
-$a=$_GET['first'];
-$b=$_GET['second'];
-$c=$_GET['third'];
-$d=$_GET['fourth'];
-array_push($any,$a,$b,$c,$d);
+   $any=[];
+$i=0;
+$counten=0;
+$countme=0;
+$countec=0;
+$a=$_POST['first'];
+$b=$_POST['second'];
+$c=$_POST['third'];
+$d=$_POST['fourth'];
+$e=$_POST['fifth'];
+$f=$_POST['sixth'];
+$g=$_POST['seventh'];
+$h=$_POST['eight'];
+array_push($any,$a,$b,$c,$d,$e,$f,$g,$h);
+while ($i<8){
+    if($any[$i]=="En")
+    {
+        $counten++;
+    }
+    
+    if($any[$i]=="Ec")
+    {
+        $countec++;
+    }
+    if($any[$i]=="Me")
+    {
+        $countme++;
+    }
+$i++;
+}
+$c=$counten*12.5;
+$_SESSION['enp']=$c;
+$_SESSION['ecp']=$countec*12.5;
+$_SESSION['mep']=$countme*12.5;
+$msg1="Your ENDOMORPH % is ".$_SESSION['enp']." <br>";
+$msg2="Your ECTOMORPH % is ". $_SESSION['ecp']." <br>";
+$msg3="Your MESOMORPH % is ".$_SESSION['mep']." <br>";
+
+if($_SESSION['enp']>$_SESSION['ecp'] && $_SESSION['enp']>$_SESSION['mep'])
+{
+    $_SESSION['type']="ENDOMORPH";
+    $msg4="YOUR DOMINANT TYPE IS  ".$_SESSION['type']; 
 }
 
+if($_SESSION['ecp']>$_SESSION['enp'] && $_SESSION['ecp']>$_SESSION['mep'])
+{
+    $_SESSION['type']="ECTOMORPH";
+    $msg4="YOUR DOMINANT TYPE IS ". $_SESSION['type']; 
+}
+
+
+if($_SESSION['mep']>$_SESSION['ecp'] && $_SESSION['mep']>$_SESSION['enp'])
+{
+    $_SESSION['type']="MESOMORPH";
+    $msg4="YOUR DOMINANT TYPE IS " .$_SESSION['type']; 
+}
+
+}
+if(isset($_GET['btn1']))
+{
+    $type=$_SESSION['type'];
+    $qry=mysql_query("Update users set type=$type where id=".$_SESSION['ID']);
+}
 
 
 ?>
@@ -91,48 +145,48 @@ if(isset($_GET['ss']))
 {
 ?>
 
-What is your height?<br>
-<form method="get">
+Shoulders are?<br>
+<form method="post">
      <select  id="cmb" data-role="slider" onChange="An(this);" >
                          <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                          <option value="En">Same As Hip</option>
+                          <option value="Me">Wider Than Hip</option>
+                          <option value="Ec">Narrow Than Hip</option>
+                          
     </select> 
     <input type="text" name="first" id="txt" hidden></input>
-<br>What is your biceps?
+<br>A pair of relaxed fit jeans with correct waist size fits me ?
 
 
  <select  id="cmb" data-role="slider" onChange="Ank(this);" >
      <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                          <option value="En">Tight Around My guses</option>
+                          <option value="Me">Perfect around gluss</option>
+                          <option value="Ec">Lose around guss</option>
+                          
     </select>
     
 <input type="text" name="second" id="txt1" hidden></input>
-<br>What is your wrist?   
+<br>Body locks?   
 
 <select  id="cmb" data-role="slider" onChange="Anku(this);" >
                           <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                          <option value="En">Round and soft</option>
+                          <option value="Me">Square and Ruged</option>
+                          <option value="Ec">large</option>
+            
     </select>
 
  
 <input type="text" name="third" id="txt2" hidden></input>
 
-<br>What is your fist?    
+<br>If I excercise my wris daz?    
 <select  id="cmb" data-role="slider" onChange="Ankur(this);" >
     <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                          <option value="En">X</option>
+                          <option value="Me">Y</option>
+                          <option value="Ec">Z</option>
+            
     </select>
 <input type="text" name="fourth" id="txt3" hidden> </input>
 
@@ -142,50 +196,48 @@ What is your height?<br>
 
 
 
-What is your height?<br>
-<form method="get">
+q5?<br>
+
      <select  id="cmb" data-role="slider" onChange="Ankura(this);" >
                          <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-    </select> 
-    <input type="text" name="first" id="txt4" hidden></input>
+                          <option value="En">A</option>
+                          <option value="Me">B</option>
+                          <option value="Ec">C</option>
+                            </select> 
+    <input type="text" name="fifth" id="txt4" hidden></input>
 <br>What is your biceps?
 
 
  <select  id="cmb" data-role="slider" onChange="Ankuraa(this);" >
      <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-    </select>
+                          <option value="En">A</option>
+                          <option value="Me">B</option>
+                          <option value="Ec">C</option>
+                           </select>
     
-<input type="text" name="second" id="txt5" hidden></input>
+<input type="text" name="sixth" id="txt5" hidden></input>
 <br>What is your wrist?   
 
 <select  id="cmb" data-role="slider" onChange="Ankuraaa(this);" >
                           <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                          <option value="En">A</option>
+                          <option value="Me">B</option>
+                          <option value="Ec">C</option>
+                          
     </select>
 
  
-<input type="text" name="third" id="txt6" hidden></input>
+<input type="text" name="seventh" id="txt6" hidden></input>
 
 <br>What is your fist?    
 <select  id="cmb" data-role="slider" onChange="Ankuraaaa(this);" >
     <option value="Select">Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
+                          <option value="En">A</option>
+                          <option value="Me">B</option>
+                          <option value="Ec">C</option>
+                          
     </select>
-<input type="text" name="fourth" id="txt7" hidden> </input>
+<input type="text" name="eight" id="txt7" hidden> </input>
 
 
 
@@ -199,13 +251,23 @@ What is your height?<br>
 
 
 <button type='submit' name='btn'>
-Submit</button>
+Genereate Result</button>
+
+
+<button type='submit' name='btn1'>
+Submit Result</button>
 </form>
 
 
 
+<?php 
 
-
+echo $msg1."<br>"; 
+echo $msg2."<br>";
+echo $msg3."<br>";
+echo $msg4."<br>";
+//   print_r($any);
+     ?>
 
 
 
@@ -213,11 +275,6 @@ Submit</button>
 }
 ?>
 
-<?php 
-
-echo $msg." TYPE: ".$type ; 
- //  print_r($any);
-     ?>
 
 
 <a href="?lg">Logout</a>
