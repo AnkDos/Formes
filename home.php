@@ -28,27 +28,6 @@ $b=$_GET['second'];
 $c=$_GET['third'];
 $d=$_GET['fourth'];
 array_push($any,$a,$b,$c,$d);
-if($any==$meso)
-{
-    $msg="YOU ARE MESO";
-    $type="meso";
-}
-
-if($any==$endo)
-{
-    $msg="YOU ARE ENDO";
-    $type="endo";
-}
-
-
-if($any==$enco)
-{
-    $msg="YOU ARE ECO";
-    $type="enco";
-}
-
-
-
 }
 
 
@@ -82,7 +61,10 @@ if($any==$enco)
               
         </script>
 
-
+<?php
+if(isset($_GET['ss']))
+{
+?>
 
 What is your height?<br>
 <form method="get">
@@ -131,6 +113,9 @@ What is your height?<br>
 <button type='submit' name='btn'>
 Submit</button>
 </form>
+<?
+}
+?>
 
 <?php 
 
@@ -140,5 +125,20 @@ echo $msg." TYPE: ".$type ;
 
 
 <a href="?lg">Logout</a>
+<br>
+
+<br>
 
 <a href="?ss">Start Survey</a>
+<br>
+
+<br>
+<a href="?wr">Show Workout Routine</a>
+<br>
+
+<br>
+<a href="?su">Show Recommended Supplements</a>
+<br>
+
+<br>
+<a href="?dp">Show Recommended Diet Plans</a>
