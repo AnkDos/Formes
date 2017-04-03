@@ -1,0 +1,10 @@
+CREATE TABLE `users` (
+  id int(11)  AUTO_INCREMENT Primary key,
+  username varchar(20) NOT NULL,
+  password varchar(25) NOT NULL ,
+  email varchar(20) NOT NULL,
+  type varchar(20) DEFAULT NULL,
+  height varchar(20) DEFAULT NULL,
+  weight varchar(20) DEFAULT NULL,
+  bmx varchar(20) 
+);
