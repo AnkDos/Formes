@@ -1,5 +1,22 @@
 <?php
 
+session_start();
+ob_start();
+require_once 'dbconnect.php';
+
+if(!isset($_SESSION['ID']))
+{
+    header("Location: index.php");
+}
+
+if(isset($_GET['lg']))
+{
+    session_destroy();
+    header("Location: index.php");
+}
+
+
+
 $meso=array(1,2,3,4);
 $endo=array(2,1,3,4);
 $enco=array(3,1,2,4);
@@ -122,3 +139,6 @@ Submit</button>
 echo $msg." TYPE: ".$type ; 
  //  print_r($any);
      ?>
+
+
+<a href="?lg">Logout</a>

@@ -73,7 +73,7 @@ if(isset($_POST['btn1']))
    <br>
         <form method='post'>
            Email <input type='email' name='mail'></input>
-       Password <input type='password' name='keys'></input>
+       Password <input type='password' name='key'></input>
         <button type='submit' name='btn'>Login</button>
    </form>
    
